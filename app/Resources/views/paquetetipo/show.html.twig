@@ -1,0 +1,36 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>Paquetetipo</h1>
+
+    <table>
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ paqueteTipo.id }}</td>
+            </tr>
+            <tr>
+                <th>Paquete</th>
+                <td>{{ paqueteTipo.paquete }}</td>
+            </tr>
+            <tr>
+                <th>Preciosus</th>
+                <td>{{ paqueteTipo.precioSus }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+            <a href="{{ path('paquetetipo_index') }}">Back to the list</a>
+        </li>
+        <li>
+            <a href="{{ path('paquetetipo_edit', { 'id': paqueteTipo.id }) }}">Edit</a>
+        </li>
+        <li>
+            {{ form_start(delete_form) }}
+                <input type="submit" value="Delete">
+            {{ form_end(delete_form) }}
+        </li>
+    </ul>
+{% endblock %}

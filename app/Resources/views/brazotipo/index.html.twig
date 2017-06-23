@@ -1,0 +1,39 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>Brazotipos list</h1>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Brazo</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for brazoTipo in brazoTipos %}
+            <tr>
+                <td><a href="{{ path('brazotipo_show', { 'id': brazoTipo.id }) }}">{{ brazoTipo.id }}</a></td>
+                <td>{{ brazoTipo.brazo }}</td>
+                <td>
+                    <ul>
+                        <li>
+                            <a href="{{ path('brazotipo_show', { 'id': brazoTipo.id }) }}">show</a>
+                        </li>
+                        <li>
+                            <a href="{{ path('brazotipo_edit', { 'id': brazoTipo.id }) }}">edit</a>
+                        </li>
+                    </ul>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+            <a href="{{ path('brazotipo_new') }}">Create a new brazoTipo</a>
+        </li>
+    </ul>
+{% endblock %}

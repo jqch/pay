@@ -1,0 +1,41 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>Paquetetipos list</h1>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Paquete</th>
+                <th>Preciosus</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for paqueteTipo in paqueteTipos %}
+            <tr>
+                <td><a href="{{ path('paquetetipo_show', { 'id': paqueteTipo.id }) }}">{{ paqueteTipo.id }}</a></td>
+                <td>{{ paqueteTipo.paquete }}</td>
+                <td>{{ paqueteTipo.precioSus }}</td>
+                <td>
+                    <ul>
+                        <li>
+                            <a href="{{ path('paquetetipo_show', { 'id': paqueteTipo.id }) }}">show</a>
+                        </li>
+                        <li>
+                            <a href="{{ path('paquetetipo_edit', { 'id': paqueteTipo.id }) }}">edit</a>
+                        </li>
+                    </ul>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+            <a href="{{ path('paquetetipo_new') }}">Create a new paqueteTipo</a>
+        </li>
+    </ul>
+{% endblock %}

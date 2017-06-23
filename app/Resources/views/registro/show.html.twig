@@ -1,0 +1,60 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>Registro</h1>
+
+    <table>
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ registro.id }}</td>
+            </tr>
+            <tr>
+                <th>Correo</th>
+                <td>{{ registro.correo }}</td>
+            </tr>
+            <tr>
+                <th>Correopassword</th>
+                <td>{{ registro.correoPassword }}</td>
+            </tr>
+            <tr>
+                <th>Usuario</th>
+                <td>{{ registro.usuario }}</td>
+            </tr>
+            <tr>
+                <th>Password</th>
+                <td>{{ registro.password }}</td>
+            </tr>
+            <tr>
+                <th>Documento</th>
+                <td>{{ registro.documento }}</td>
+            </tr>
+            <tr>
+                <th>Documentofile</th>
+                <td>{{ registro.documentoFile }}</td>
+            </tr>
+            <tr>
+                <th>Montopagado</th>
+                <td>{{ registro.montoPagado }}</td>
+            </tr>
+            <tr>
+                <th>Fecharegistro</th>
+                <td>{% if registro.fechaRegistro %}{{ registro.fechaRegistro|date('Y-m-d H:i:s') }}{% endif %}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+            <a href="{{ path('registro_index') }}">Back to the list</a>
+        </li>
+        <li>
+            <a href="{{ path('registro_edit', { 'id': registro.id }) }}">Edit</a>
+        </li>
+        <li>
+            {{ form_start(delete_form) }}
+                <input type="submit" value="Delete">
+            {{ form_end(delete_form) }}
+        </li>
+    </ul>
+{% endblock %}

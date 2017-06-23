@@ -1,0 +1,55 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>Personas list</h1>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Carnet</th>
+                <th>Nombre</th>
+                <th>Paterno</th>
+                <th>Materno</th>
+                <th>Fechanacimiento</th>
+                <th>Foto</th>
+                <th>Telefono</th>
+                <th>Direccion</th>
+                <th>Fecharegistro</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for persona in personas %}
+            <tr>
+                <td><a href="{{ path('persona_show', { 'id': persona.id }) }}">{{ persona.id }}</a></td>
+                <td>{{ persona.carnet }}</td>
+                <td>{{ persona.nombre }}</td>
+                <td>{{ persona.paterno }}</td>
+                <td>{{ persona.materno }}</td>
+                <td>{% if persona.fechaNacimiento %}{{ persona.fechaNacimiento|date('Y-m-d') }}{% endif %}</td>
+                <td>{{ persona.foto }}</td>
+                <td>{{ persona.telefono }}</td>
+                <td>{{ persona.direccion }}</td>
+                <td>{% if persona.fechaRegistro %}{{ persona.fechaRegistro|date('Y-m-d H:i:s') }}{% endif %}</td>
+                <td>
+                    <ul>
+                        <li>
+                            <a href="{{ path('persona_show', { 'id': persona.id }) }}">show</a>
+                        </li>
+                        <li>
+                            <a href="{{ path('persona_edit', { 'id': persona.id }) }}">edit</a>
+                        </li>
+                    </ul>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+            <a href="{{ path('persona_new') }}">Create a new persona</a>
+        </li>
+    </ul>
+{% endblock %}

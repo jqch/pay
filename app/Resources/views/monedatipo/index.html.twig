@@ -1,0 +1,41 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>Monedatipos list</h1>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Moneda</th>
+                <th>Descripcion</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for monedaTipo in monedaTipos %}
+            <tr>
+                <td><a href="{{ path('monedatipo_show', { 'id': monedaTipo.id }) }}">{{ monedaTipo.id }}</a></td>
+                <td>{{ monedaTipo.moneda }}</td>
+                <td>{{ monedaTipo.descripcion }}</td>
+                <td>
+                    <ul>
+                        <li>
+                            <a href="{{ path('monedatipo_show', { 'id': monedaTipo.id }) }}">show</a>
+                        </li>
+                        <li>
+                            <a href="{{ path('monedatipo_edit', { 'id': monedaTipo.id }) }}">edit</a>
+                        </li>
+                    </ul>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+            <a href="{{ path('monedatipo_new') }}">Create a new monedaTipo</a>
+        </li>
+    </ul>
+{% endblock %}

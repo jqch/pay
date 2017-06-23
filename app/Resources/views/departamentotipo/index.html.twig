@@ -1,0 +1,41 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>Departamentotipos list</h1>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Departamento</th>
+                <th>Abrev</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for departamentoTipo in departamentoTipos %}
+            <tr>
+                <td><a href="{{ path('departamentotipo_show', { 'id': departamentoTipo.id }) }}">{{ departamentoTipo.id }}</a></td>
+                <td>{{ departamentoTipo.departamento }}</td>
+                <td>{{ departamentoTipo.abrev }}</td>
+                <td>
+                    <ul>
+                        <li>
+                            <a href="{{ path('departamentotipo_show', { 'id': departamentoTipo.id }) }}">show</a>
+                        </li>
+                        <li>
+                            <a href="{{ path('departamentotipo_edit', { 'id': departamentoTipo.id }) }}">edit</a>
+                        </li>
+                    </ul>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+            <a href="{{ path('departamentotipo_new') }}">Create a new departamentoTipo</a>
+        </li>
+    </ul>
+{% endblock %}
